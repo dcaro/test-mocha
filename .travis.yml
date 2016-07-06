@@ -2,5 +2,6 @@ language: node_js
 before_scripts:
   - echo $TRAVIS_COMMIT_RANGE
   - echo $TRAVIS_PULL_REQUEST
+  - echo $TRAVIS_COMMIT_RANGE
   - npm install -g mocha
 

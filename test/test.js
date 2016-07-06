@@ -1,6 +1,6 @@
 var assert = require('assert');
 	fs = require('fs');
-	fileName = '2016-05-19-template.md'
+	//fileName = '2016-05-19-template.md'
 
  var tags =[ 'title: ', 'author: ', 'date: ', 'color: ']; 
 
