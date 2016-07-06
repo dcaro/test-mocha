@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - 0.12.x
+  - 5.1.0
 before_scripts:
   - npm install -g mocha
   - npm install git
