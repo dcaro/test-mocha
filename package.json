@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "node_modules/mocha/bin/mocha"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/dcaro/test-mocha/issues"
   },
-  "homepage": "https://github.com/dcaro/test-mocha#readme"
+  "homepage": "https://github.com/dcaro/test-mocha#readme",
+  "devDependencies": {
+    "mocha": "^2.5.3"
+  }
 }
