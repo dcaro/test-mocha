@@ -9,6 +9,7 @@ console.log(commitRange);
 function GetModifedfiles (commitRange) {
 	var cmd = "git diff --name-only"+" "+commitRange
 	console.log(cmd);
+	
 	var stdout = execSync.execSync(cmd)
   	var lines = stdout.split('\n');
 	var result = {};
