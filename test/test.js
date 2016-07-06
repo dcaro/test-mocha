@@ -1,13 +1,15 @@
 var assert = require('assert');
-	execSync = require('child_process').execSync,
+	execSync = require('child_process').execSync;
 	fs = require('fs');
-	fileName = '2016-05-19-template.md'
-	commitRange = process.env['TRAVIS_COMMIT_RANGE']
+	fileName = '2016-05-19-template.md';
+	commitRange = process.env['TRAVIS_COMMIT_RANGE'];
 
 console.log(commitRange);
 
-function GetModifedfiles () {
-	var stdout = execSync('git diff --name-only'+' '+commitRange);
+function GetModifedfiles (commitRange) {
+	var cmd = 'git diff --name-only'+' '+commitRange
+	console.log(cmd);
+	var stdout = execSync(cmd);
   	var lines = stdout.split('\n');
 	var result = {};
 
@@ -19,7 +21,7 @@ function GetModifedfiles () {
   	return result;
 }
 
-	var ModifiedFiles = GetModifedfiles();
+	var ModifiedFiles = GetModifedfiles(commitRange);
 	console.log(ModifiedFiles);
 	console.log(Object.keys(ModifiedFiles).length);
 
