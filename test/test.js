@@ -27,12 +27,12 @@ function GetModifedfiles (commitRange) {
 	console.log(Object.keys(ModifiedFiles).length);
 
 describe("Check Files modified", function(){
-	it("Files should exist", function () {
-			
- 		assert.ok(Object.keys(ModifiedFiles).length);
-
-
+	it.skip("No files have been modified", function () {	
+ 		assert.equal(Object.keys(ModifiedFiles).length, 0);
 	});
+	it("Files should exist", function () {	
+ 		assert.ok(Object.keys(ModifiedFiles).length);
+	});	
 });
 
 describe("Check Front Matter", function(){
