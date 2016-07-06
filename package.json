@@ -1,0 +1,22 @@
+{
+  "name": "test-mocha",
+  "version": "1.0.0",
+  "description": "Testing Mocha with Travis ",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dcaro/test-mocha.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dcaro/test-mocha/issues"
+  },
+  "homepage": "https://github.com/dcaro/test-mocha#readme"
+}
