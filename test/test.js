@@ -1,6 +1,10 @@
 var assert = require('assert');
+	execSync = require('child_process').execSync,
 	fs = require('fs');
-	//fileName = '2016-05-19-template.md'
+	fileName = '2016-05-19-template.md'
+
+echo(process.env.TRAVIS_COMMIT_RANGE)
+echo(process.env.TRAVIS_PULL_REQUEST)
 
  var tags =[ 'title: ', 'author: ', 'date: ', 'color: ']; 
 
