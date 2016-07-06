@@ -1,4 +1,5 @@
 language: node_js
 before_scripts:
   - npm install -g mocha
+  - npm install git
 
