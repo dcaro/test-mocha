@@ -2,11 +2,12 @@ var assert = require('assert');
 	execSync = require('child_process').execSync,
 	fs = require('fs');
 	fileName = '2016-05-19-template.md'
+	commitRange = process.env['TRAVIS_COMMIT_RANGE']
 
-console.log(process.env['TRAVIS_COMMIT_RANGE']);
+console.log(commitRange);
 
 function GetModifedfiles () {
-	var stdout = execSync('git diff --name-only')+' '+process.env['TRAVIS_COMMIT_RANGE'];
+	var stdout = execSync('git diff --name-only'+' '+commitRange);
   	var lines = stdout.split('\n');
 	var result = {};
 
