@@ -3,8 +3,10 @@ var assert = require('assert');
 	fs = require('fs');
 	fileName = '2016-05-19-template.md'
 
+console.log(process.env['TRAVIS_COMMIT_RANGE']);
+
 function GetModifedfiles () {
-	var stdout = execSync('git diff --name-only')+' '+process.env.TRAVIS_COMMIT_RANGE;
+	var stdout = execSync('git diff --name-only')+' '+process.env['TRAVIS_COMMIT_RANGE'];
   	var lines = stdout.split('\n');
 	var result = {};
 
