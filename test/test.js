@@ -3,10 +3,31 @@ var assert = require('assert');
 	fs = require('fs');
 	fileName = '2016-05-19-template.md'
 
-echo(process.env.TRAVIS_COMMIT_RANGE)
-echo(process.env.TRAVIS_PULL_REQUEST)
 
- var tags =[ 'title: ', 'author: ', 'date: ', 'color: ']; 
+function getModifiedFiles() {
+
+};
+
+
+
+describe("Check Files modified", function(){
+	it("Files should exist", function () {
+			
+  assert.ok(process.env.TRAVIS_COMMIT_RANGE, 'VALIDATE_MODIFIED_ONLY requires TRAVIS_COMMIT_RANGE to be set to [START_COMMIT_HASH]...[END_COMMIT_HASH]');
+  var stdout = execSync('git diff --name-only ' + process.env.TRAVIS_COMMIT_RANGE, {
+    encoding: 'utf8'
+  });
+  var lines = stdout.split('\n');
+  var result = {};
+
+  for (var i = 0; i < lines.length; i += 1) {
+    result[lines[i]] = lines[i];
+  }
+
+  return result;
+
+	});
+});
 
 describe("Check Front Matter", function(){
  	var contents = fs.readFileSync(fileName, 'UTF8');
