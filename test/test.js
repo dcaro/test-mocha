@@ -11,7 +11,7 @@ function GetModifedfiles (commitRange) {
 	console.log(cmd);
 
 	var stdout = execSync(cmd);
-  	var lines = stdout.split('\n');
+  	var lines = stdout.toString().split('\n');
 	var result = {};
 
 	for (var i = 0; i < lines.length; i += 1) {
