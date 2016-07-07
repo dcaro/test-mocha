@@ -27,45 +27,49 @@ function GetModifedfiles (commitRange) {
 	console.log(Object.keys(ModifiedFiles).length);
 
 describe("Check Files modified", function(){
-	it("No files have been modified", function () {	
- 		//assert.equal(Object.keys(ModifiedFiles).length, 0);
-		 done();
-	});
-	it("Several files have been modified", function () {	
- 		assert.ok(Object.keys(ModifiedFiles).length);
+	it("Nomber of modified files", function () {
+		if (Object.keys(ModifiedFiles).length == 0)	{
+			console.log("No files have been modified");			
+		}
+		else {
+			console.log("Several files modified, verifying");
+
+			describe("Check Front Matter", function(){
+				var contents = fs.readFileSync(fileName, 'UTF8');
+				it("Verify presence of tags", function () {
+						
+					//frontmatter = /---\s*([\s\S]*?)\s*---/
+					frontmatter = /---\s*((layout:)+)([\s\S]*?)((title:)+)([\s\S]*?)((author:)+)([\s\S]*?)((date:)+)([\s\S]*?)((color: "blue")+)([\s\S]*?)((excerpt:)+)([\s\S]*?)\s*---/
+					assert.ok (frontmatter.test(contents));
+
+				});
+			});
+			
+			describe("Content of the MD file", function(){
+				var contents = fs.readFileSync(fileName, 'UTF8');
+				it("Verify customer profile", function () {			
+					pattern = /\s*((## [Cc]ustomer [Pp]rofile ##)+)([\s\S]*?)\s*/
+					assert.ok (pattern.test(contents));
+				});
+				
+				it("Verify conclusion", function () {
+					pattern = /\s*((## [Cc]onclusion ##)+)([\s\S]*?)\s*/
+					assert.ok (pattern.test(contents));
+
+				});
+
+					it("Verify resources", function () {
+					pattern = /\s*((## [Rr]esources ##)+)([\s\S]*?)\s*/
+					assert.ok (pattern.test(contents));
+
+				});
+			});
+
+		}
+
 	});	
 });
 
-describe("Check Front Matter", function(){
- 	var contents = fs.readFileSync(fileName, 'UTF8');
-	it("Verify presence of tags", function () {
-			
-		//frontmatter = /---\s*([\s\S]*?)\s*---/
-		frontmatter = /---\s*((layout:)+)([\s\S]*?)((title:)+)([\s\S]*?)((author:)+)([\s\S]*?)((date:)+)([\s\S]*?)((color: "blue")+)([\s\S]*?)((excerpt:)+)([\s\S]*?)\s*---/
-		assert.ok (frontmatter.test(contents));
-
-	});
-});
-
-describe("Content of the MD file", function(){
- 	var contents = fs.readFileSync(fileName, 'UTF8');
-	it("Verify customer profile", function () {			
-		pattern = /\s*((## [Cc]ustomer [Pp]rofile ##)+)([\s\S]*?)\s*/
-		assert.ok (pattern.test(contents));
-	});
-	
-	it("Verify conclusion", function () {
-		pattern = /\s*((## [Cc]onclusion ##)+)([\s\S]*?)\s*/
-		assert.ok (pattern.test(contents));
-
-	});
-
-		it("Verify resources", function () {
-		pattern = /\s*((## [Rr]esources ##)+)([\s\S]*?)\s*/
-		assert.ok (pattern.test(contents));
-
-	});
-});
 
 
 
